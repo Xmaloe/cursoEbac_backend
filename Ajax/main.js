@@ -13,6 +13,24 @@
 //    });
 //});
 
+//        fetch(endpoint)
+//        .then(function(resposta) {
+//            return resposta.json();
+//        })
+//        .then(function(json) {
+//            const logradouro = resposta.logradouro;
+//            const bairro = resposta.bairro;
+//            const localidade = resposta.localidade; 
+//            const estado = resposta.uf;
+//            const endereco = `${logradouro}, ${bairro} - ${localidade} - ${estado}`;
+//            $('#endereco').val(endereco);
+//
+//            setTimeout(function() {
+//                $(botao).find('i').removeClass('d-none');
+//                $(botao).find('span').addClass('d-none');
+//            }, 1000);
+//        })
+
 $(document).ready(function() {
     $('#cep').mask('00000-000');
     $('#buscar').click(function() {
@@ -38,20 +56,4 @@ $(document).ready(function() {
     })
 })
 
-//        fetch(endpoint)
-//        .then(function(resposta) {
-//            return resposta.json();
-//        })
-//        .then(function(json) {
-//            const logradouro = resposta.logradouro;
-//            const bairro = resposta.bairro;
-//            const localidade = resposta.localidade; 
-//            const estado = resposta.uf;
-//            const endereco = `${logradouro}, ${bairro} - ${localidade} - ${estado}`;
-//            $('#endereco').val(endereco);
 
-//            setTimeout(function() {
-//                $(botao).find('i').removeClass('d-none');
-//                $(botao).find('span').addClass('d-none');
-//            }, 1000);
-//        })
