@@ -1,5 +1,5 @@
 :root {
-    --header-color: #01a3a4;
+    --header-color: #182C61;
     --bg-color: #eee;
 }
 
@@ -51,10 +51,11 @@ header .container {
 .profile-link {
     background-color: var(--header-color);
     color: var(--bg-color);
-    padding: 8px 16px;
+    padding: 8px 64px;
     display: inline-block;
     margin-top: 24px;
     text-decoration: none;
+    border-radius: 4px;
 }
 
 .numbers {
