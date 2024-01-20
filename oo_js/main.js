@@ -1,10 +1,11 @@
-    // Classe abstrata ContaBancaria
+// Classe abstrata ContaBancaria
     class ContaBancaria {
+//Função contrutora 
         constructor(titular, saldo) {
         this._titular = titular;
         this._saldo = saldo;
         }
-    
+//Atributos    
         get titular() {
         return this._titular;
         }
@@ -12,21 +13,19 @@
         get saldo() {
         return this._saldo;
         }
-    
+//Métodos     
         depositar(valor) {
         this._saldo += valor;
         console.log(`Depósito de R$${valor} realizado. Novo saldo: R$${this._saldo}`);
-        }
-    
+        }    
         sacar(valor) {
         if (valor <= this._saldo) {
             this._saldo -= valor;
             console.log(`Saque de R$${valor} realizado. Novo saldo: R$${this._saldo}`);
         } 
     }
-    }
-    
-    // Classe ContaCorrente herda de ContaBancaria
+}
+// Classe ContaCorrente herda de ContaBancaria
     class ContaCorrente extends ContaBancaria {
         constructor(titular, saldo, taxaRendimento) {
             super(titular, saldo);
