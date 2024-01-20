@@ -61,6 +61,8 @@ console.log(existeAlgumAlunoDeFrontend);
 function filtraAlunosDeFrontend(aluno) {
     return aluno.curso === 'Frontend';
 }
+//Método arrow const filtraAlunosDeFrontend = aluno => aluno.curso === 'Frontend';
+
 const filtraAlunosDeFrontend2 = (aluno, indice) => aluno.curso === 'Frontend';
 const alunosDeFrontend = alunos2.filter(filtraAlunosDeFrontend)
 console.log(alunosDeFrontend)
