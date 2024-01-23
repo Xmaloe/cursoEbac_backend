@@ -1,38 +1,41 @@
-    // function Pokemon(nomeDoPokemon, tipoDoPokemon) {
-    //     this.nome = nomeDoPokemon;
-    //     this.tipo = tipoDoPokemon;
+    //pikachu é uma instância do Pokemom
+    // const pikachu = new Pokemon("Pikachu", "elétrico")    
+    // function Pokemon(nome, tipo) {
+    //     this.nome = nome;
+    //     this.tipo = tipo;
     // }
 
-    // const pikachu = new Pokemon("Pikachu", "elétrico")
-
     class Pokemon {
+//encapsulamento
         #hp = 100;
 
-        constructor(nomeDoPokemon, tipoDoPokemon) {
-            this.nome = nomeDoPokemon;
-            this.tipo = tipoDoPokemon;
+        constructor(nome, tipo) {
+            this.nome = nome;
+            this.tipo = tipo;
         }
 
         atacar(nomeDoAtaque) {
             console.log(`${this.nome} atacou com ${nomeDoAtaque}`)
         }
-
+//encapsulamento
         recebeuAtaque() {
             this.#hp -= 10;
         }
-
+//encapsulamento
         exibeHp() {
             console.log(this.#hp)
         }
     }
 
+//Pikachu herda Pokemon     
     class Pikachu extends Pokemon {
         constructor() {
+//super recebe os argumentos do Pokemon(classe Mãe)
             super('Pikachu', 'Elétrico')
         }
-
+//polimorfismo para não ter que repertir a função de atacar
         atacar() {
-            console.log(`${this.nome} atacou com choque do trovão`)
+            console.log(`${this.nome} atacou com choque do ${this.tipo}`)
         }
     }
 
@@ -44,7 +47,6 @@
     console.log(pikachuDoAsh.hp)
 
     pikachuDoAsh.atacar()
-
     pikachuDoAsh.exibeHp()
 
     const pikachu = new Pokemon('pikachu', 'elétrico');

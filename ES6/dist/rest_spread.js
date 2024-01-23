@@ -14,17 +14,21 @@ function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key i
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 // rest
-function somar() {
-  var soma = 0;
-  for (var i = 0; i < arguments.length; i++) {
-    soma += arguments[i];
-  }
-  return soma;
-  // arguments.map
-  // console.log(arguments)
-  // return a + b + c;
-}
-console.log(somar(10, 20, 30));
+//function somar() {
+//    let soma = 0;
+
+//    for (let i = 0; i < arguments.length; i++) {
+//        soma += arguments[i];
+//    }
+
+//    return soma;
+// arguments.map
+// console.log(arguments)
+// return a + b + c;
+//}
+//console.log(somar(10, 20, 30))
+
+//No ECMA o Rest substituiu o arguments
 function somarComRest() {
   for (var _len = arguments.length, numeros = new Array(_len), _key = 0; _key < _len; _key++) {
     numeros[_key] = arguments[_key];
@@ -37,33 +41,42 @@ function somarComRest() {
 }
 console.log(somarComRest(10, 20, 30));
 
-// spread
+// spread (pode ser usado para concatenação)
+// Criando um array de números
 var numeros = [1, 2, 3, 4];
 (_console = console).log.apply(_console, numeros);
+
+// Arrays de times de futebol de São Paulo e Rio de Janeiro
 var timesDeFutebolDeSp = ['santos', 'palmeiras', 'bragantino', 'são paulo'];
 var timesDeFutebolDoRio = ['vasco', 'botafogo', 'flamengo', 'fluminense'];
 
-// const timesDeFutebol = timesDeFutebolDeSp.concat(timesDeFutebolDoRio);
+// Concatenando arrays usando spread operator
 var timesDeFutebol = [].concat(timesDeFutebolDeSp, timesDeFutebolDoRio);
-
-// timesDeFutebolDeSp.concat(timesDeFutebolDoRio)
+// Alternativa usando o método concat (comentado)
+// const timesDeFutebol = timesDeFutebolDeSp.concat(timesDeFutebolDoRio);
 console.log(timesDeFutebol);
+
+// Objeto representando um carro da Julia
 var carroDaJulia = {
   modelo: 'gol',
   marca: 'vw',
   motor: 1.6
 };
+
+// Criando um novo objeto (carroDaAna) baseado no objeto carroDaJulia, mas com motor 1.8
 var carroDaAna = _objectSpread(_objectSpread({}, carroDaJulia), {}, {
   motor: 1.8
 });
 console.log(carroDaAna);
 
-// desestruturação
-// const motorDoCarroDaAna = carroDaAna.motor;
+// Desestruturação para obter o valor da propriedade 'motor' do objeto carroDaAna
 var motorDoCarroDaAna = carroDaAna.motor;
+// Obtendo o valor da propriedade 'motor' do objeto carroDaJulia
 var motorDoCarroDaJulia = carroDaJulia.motor;
 console.log(motorDoCarroDaAna);
 console.log(motorDoCarroDaJulia);
+
+// Desestruturação de um array para obter elementos individuais e o restante em uma variável
 var _timesDeFutebol = _toArray(timesDeFutebol),
   item1 = _timesDeFutebol[0],
   item2 = _timesDeFutebol[1],

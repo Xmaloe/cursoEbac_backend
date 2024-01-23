@@ -21,20 +21,21 @@ function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classEx
 function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
 function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
 var _hp = /*#__PURE__*/new WeakMap();
-// function Pokemon(nomeDoPokemon, tipoDoPokemon) {
-//     this.nome = nomeDoPokemon;
-//     this.tipo = tipoDoPokemon;
+//pikachu é uma instância do Pokemom
+// const pikachu = new Pokemon("Pikachu", "elétrico")    
+// function Pokemon(nome, tipo) {
+//     this.nome = nome;
+//     this.tipo = tipo;
 // }
-// const pikachu = new Pokemon("Pikachu", "elétrico")
 var Pokemon = /*#__PURE__*/function () {
-  function Pokemon(nomeDoPokemon, tipoDoPokemon) {
+  function Pokemon(nome, tipo) {
     _classCallCheck(this, Pokemon);
     _classPrivateFieldInitSpec(this, _hp, {
       writable: true,
       value: 100
     });
-    this.nome = nomeDoPokemon;
-    this.tipo = tipoDoPokemon;
+    this.nome = nome;
+    this.tipo = tipo;
   }
   _createClass(Pokemon, [{
     key: "atacar",
@@ -53,17 +54,19 @@ var Pokemon = /*#__PURE__*/function () {
     }
   }]);
   return Pokemon;
-}();
+}(); //Pikachu herda Pokemon     
 var Pikachu = /*#__PURE__*/function (_Pokemon) {
   _inherits(Pikachu, _Pokemon);
   function Pikachu() {
     _classCallCheck(this, Pikachu);
+    //super recebe os argumentos do Pokemon(classe Mãe)
     return _callSuper(this, Pikachu, ['Pikachu', 'Elétrico']);
   }
+  //polimorfismo para não ter que repertir a função de atacar
   _createClass(Pikachu, [{
     key: "atacar",
     value: function atacar() {
-      console.log("".concat(this.nome, " atacou com choque do trov\xE3o"));
+      console.log("".concat(this.nome, " atacou com choque do ").concat(this.tipo));
     }
   }]);
   return Pikachu;

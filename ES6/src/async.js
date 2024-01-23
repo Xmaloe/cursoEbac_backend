@@ -1,53 +1,49 @@
-    function funcaoMuitoPesada() {
-        let execucoes = 0;
-        for (let i = 0; i < 1000000000; i++) {
-            execucoes++;
-        }
-        return execucoes;
-    }
+    // Função síncrona que realiza muitas execuções (simulando uma função pesada)
+//    function funcao() {
+//        let execucoes = 0;
+//        for (let i = 0; i < 1000000000; i++) {
+//            execucoes++;
+//        }
+//        return execucoes;
+//    }
 
-    const funcaoMuitoPesadaPromise = new Promise((resolve, reject) => {
+    // Criando uma Promise para a função pesada
+//Promessa que será resolvida com (resolve), em caso de erro catch avisará com (reject)
+    const funcaoPromise = new Promise((resolve, reject) => {
         try {
             let execucoes = 0;
             for (let i = 0; i < 1000000000; i++) {
-                execucoess++;
+                execucoes++;
             }
             resolve(execucoes);
         } catch(e) {
-            reject('Deu erro na iteração dos números')
+            reject('Deu erro na iteração dos números');
         }
-    })
+    });
 
+    // Função assíncrona com parâmetros usando Promise
     const promiseComParametros = (login, senha) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(`Logado com o usuário: ${login}`)
-            }, 3000)
-        })
-    }
+                resolve(`Logado com o usuário: ${login}`);
+            }, 3000);
+        });
+    };
 
-
-    // console.log(funcaoMuitoPesada())
-
-
-
-
+    // Função principal assíncrona
     async function execucaoPrincipal() {
-        console.log("inicio")
-
-        // await funcaoMuitoPesadaPromise.then(resultado => console.log(resultado)).catch(erro => console.log(erro))
-    promiseComParametros('gian@gmail.com', 123456).then(resultado => {
-        console.log(resultado);
-    })
-
+        console.log("Inicio");
+        // Executando a função assíncrona com parâmetros usando Promise
+        promiseComParametros('karenmoraes@gmail.com', 123456).then(resultado => {
+            console.log(resultado);
+        });
         try {
-            const resultado = await funcaoMuitoPesadaPromise;
-            console.log(resultado)
+            // await que epera esse resultado sair para outras funções darem continuidade
+            const resultado = await funcaoPromise;
+            console.log(resultado);
         } catch(e) {
-            console.log(e)
+            console.log(e);
         }
-
-        console.log("fim")
+        console.log("Fim");
     }
-
-    execucaoPrincipal()
+    execucaoPrincipal();
