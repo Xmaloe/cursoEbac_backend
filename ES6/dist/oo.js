@@ -30,6 +30,7 @@ var _hp = /*#__PURE__*/new WeakMap();
 var Pokemon = /*#__PURE__*/function () {
   function Pokemon(nome, tipo) {
     _classCallCheck(this, Pokemon);
+    //encapsulamento
     _classPrivateFieldInitSpec(this, _hp, {
       writable: true,
       value: 100
@@ -42,11 +43,13 @@ var Pokemon = /*#__PURE__*/function () {
     value: function atacar(nomeDoAtaque) {
       console.log("".concat(this.nome, " atacou com ").concat(nomeDoAtaque));
     }
+    //encapsulamento
   }, {
     key: "recebeuAtaque",
     value: function recebeuAtaque() {
       _classPrivateFieldSet(this, _hp, _classPrivateFieldGet(this, _hp) - 10);
     }
+    //encapsulamento
   }, {
     key: "exibeHp",
     value: function exibeHp() {
