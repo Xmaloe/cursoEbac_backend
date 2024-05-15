@@ -1,17 +1,23 @@
 "use strict";
 
 var redesSociais = ['Facebook', 'Instagram', 'Twitter', 'LinkedIn', 'Pinterest'];
-
 //for (let i = 0; i < redesSociais.length; i++) {
-//   console.log(`Eu tenho perfil na rede social: ${redesSociais[i]}`);
-//}
+//   console.log(`Eu tenho perfil na rede social: ${redesSociais[i]}`); este i é = 0 e retorna todos, se colocasse como valor = 1, o terceiro item do array seria undefined 
+//} 
+// Dessa forma o i se inicia no 0 e se limita até o indice/item 2 do array
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //EcmaScript 6
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Array forEach
 redesSociais.forEach(function (item) {
   console.log("Eu tenho perfil na rede social: ".concat(item));
 });
 
+redesSociais.forEach(function(nomeRede, i) { //Array forEach, porém dessa forma númera cada item 
+  console.log(`#${i} Eu tenho perfil na rede social: ${nomeRede}`)
+})
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Array maps
 var alunos = ['Karen', 'Isabella', 'Vicente', 'Helena'];
 var alunos2 = alunos.map(function (item) {
@@ -22,23 +28,26 @@ var alunos2 = alunos.map(function (item) {
 });
 console.log(alunos2);
 
-//const numeros = [1, 2, 3, 4, 5]
-//const dobraNumeros = numeros.map(function(numeroAtual) {
-//    return numeroAtual * 2;
-//})
-//console.log(dobraNumeros);
+const numeros = [1, 2, 3, 4, 5]
+const dobraNumeros = numeros.map(function(numeroAtual) {
+   return numeroAtual * 2;
+})
+console.log(dobraNumeros);
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Array find
 var vicente = alunos2.find(function (item) {
   return item.nome == 'Vicente';
 });
 console.log(vicente);
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Array findIndex
 var indicevicente = alunos2.findIndex(function (item) {
   return item.nome == 'Vicente';
 });
 console.log(indicevicente);
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Metodos
 
