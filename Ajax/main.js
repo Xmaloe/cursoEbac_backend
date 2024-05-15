@@ -35,7 +35,7 @@ $(document).ready(function() {
         $(this).find('span').removeClass('d-none');
 
         fetch(endpoint)
-            .then(function(resposta) {
+            .then(function(resposta) { //then faz o papel do try
                 return resposta.json();
             })
             .then(function(json) {
@@ -46,10 +46,10 @@ $(document).ready(function() {
                 const endereco = `${logradouro}, ${bairro} - ${localidade} - ${estado}`;
                 $('#endereco').val(endereco);
             })
-            .catch(function() {
+            .catch(function() { //identificar o erro 
                 alert("Ocorreu um erro ao buscar o endereço, tente novamente mais tarde.");
             })
-            .finally(function() {
+            .finally(function() { //final
                 setTimeout(function() {
                     $(botao).find('i').removeClass('d-none');
                     $(botao).find('span').addClass('d-none');
