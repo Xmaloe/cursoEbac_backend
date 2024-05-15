@@ -88,3 +88,7 @@ $(document).ready(function() {
 
 
 
+// Em JavaScript, usar `try` é como um equilibrista caminhando na corda bamba, representando uma seção de código que pode gerar erros. 
+// Assim como o equilibrista realiza uma tarefa arriscada, o bloco `try` executa código que pode falhar. O bloco `catch`, por outro lado, é como uma rede de segurança abaixo do equilibrista. 
+// Se ele cair (um erro ocorre), a rede (o `catch`) o captura, permitindo lidar com o erro. Então, `try` é para executar código arriscado, e `catch` é para gerenciar os erros que podem surgir.
+
