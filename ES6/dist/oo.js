@@ -11,15 +11,13 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Objec
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
 function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
-function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
-function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
-function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
-function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
-function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
 var _hp = /*#__PURE__*/new WeakMap();
 //pikachu é uma instância do Pokemom
 // const pikachu = new Pokemon("Pikachu", "elétrico")    
@@ -31,14 +29,11 @@ var Pokemon = /*#__PURE__*/function () {
   function Pokemon(nome, tipo) {
     _classCallCheck(this, Pokemon);
     //encapsulamento
-    _classPrivateFieldInitSpec(this, _hp, {
-      writable: true,
-      value: 100
-    });
+    _classPrivateFieldInitSpec(this, _hp, 100);
     this.nome = nome;
     this.tipo = tipo;
   }
-  _createClass(Pokemon, [{
+  return _createClass(Pokemon, [{
     key: "atacar",
     value: function atacar(nomeDoAtaque) {
       console.log("".concat(this.nome, " atacou com ").concat(nomeDoAtaque));
@@ -47,32 +42,30 @@ var Pokemon = /*#__PURE__*/function () {
   }, {
     key: "recebeuAtaque",
     value: function recebeuAtaque() {
-      _classPrivateFieldSet(this, _hp, _classPrivateFieldGet(this, _hp) - 10);
+      _classPrivateFieldSet(_hp, this, _classPrivateFieldGet(_hp, this) - 10);
     }
     //encapsulamento
   }, {
     key: "exibeHp",
     value: function exibeHp() {
-      console.log(_classPrivateFieldGet(this, _hp));
+      console.log(_classPrivateFieldGet(_hp, this));
     }
   }]);
-  return Pokemon;
 }(); //Pikachu herda Pokemon     
-var Pikachu = /*#__PURE__*/function (_Pokemon) {
-  _inherits(Pikachu, _Pokemon);
+var Pikachu = /*#__PURE__*/function (_Pokemon2) {
   function Pikachu() {
     _classCallCheck(this, Pikachu);
     //super recebe os argumentos do Pokemon(classe Mãe)
     return _callSuper(this, Pikachu, ['Pikachu', 'Elétrico']);
   }
   //polimorfismo para não ter que repertir a função de atacar
-  _createClass(Pikachu, [{
+  _inherits(Pikachu, _Pokemon2);
+  return _createClass(Pikachu, [{
     key: "atacar",
     value: function atacar() {
       console.log("".concat(this.nome, " atacou com choque do ").concat(this.tipo));
     }
   }]);
-  return Pikachu;
 }(Pokemon);
 var pikachuDoAsh = new Pikachu();
 pikachuDoAsh.recebeuAtaque();
