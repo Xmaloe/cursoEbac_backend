@@ -1,61 +1,59 @@
-    //pikachu é uma instância do Pokemom
-    // const pikachu = new Pokemon("Pikachu", "elétrico")    
-    // function Pokemon(nome, tipo) {
-    //     this.nome = nome;
-    //     this.tipo = tipo;
-    // }
+// Define a classe base Pokemon
+class Pokemon {
+    // Encapsula a propriedade HP
+    #hp = 100;
 
-    class Pokemon {
-//encapsulamento
-        #hp = 100;
-
-        constructor(nome, tipo) {
-            this.nome = nome;
-            this.tipo = tipo;
-        }
-
-        atacar(nomeDoAtaque) {
-            console.log(`${this.nome} atacou com ${nomeDoAtaque}`)
-        }
-//encapsulamento
-        recebeuAtaque() {
-            this.#hp -= 10;
-        }
-//encapsulamento
-        exibeHp() {
-            console.log(this.#hp)
-        }
+    // Construtor para inicializar o Pokemon com nome e tipo
+    constructor(nome, tipo) {
+        this.nome = nome;
+        this.tipo = tipo;
     }
 
-//Pikachu herda Pokemon     
-    class Pikachu extends Pokemon {
-        constructor() {
-//super recebe os argumentos do Pokemon(classe Mãe)
-            super('Pikachu', 'Elétrico')
-        }
-//polimorfismo para não ter que repertir a função de atacar
-        atacar() {
-            console.log(`${this.nome} atacou com choque do ${this.tipo}`)
-        }
+    // Método para atacar
+    atacar(nomeDoAtaque) {
+        console.log(`${this.nome} atacou com ${nomeDoAtaque}`);
     }
 
-    const pikachuDoAsh = new Pikachu();
+    // Método para reduzir HP quando atacado
+    recebeuAtaque() {
+        this.#hp -= 10;
+    }
 
-    pikachuDoAsh.recebeuAtaque();
-    pikachuDoAsh.hp = 5000;
+    // Método para exibir HP atual
+    exibeHp() {
+        console.log(this.#hp);
+    }
+}
 
-    console.log(pikachuDoAsh.hp)
+// Define uma subclasse Pikachu herdando de Pokemon
+class Pikachu extends Pokemon {
+    // Construtor inicializa Pikachu com nome e tipo predefinidos
+    constructor() {
+        // Chama o construtor da superclasse com argumentos específicos
+        super('Pikachu', 'Elétrico');
+    }
 
-    pikachuDoAsh.atacar()
-    pikachuDoAsh.exibeHp()
+    // Sobrescreve o método de ataque
+    atacar() {
+        console.log(`${this.nome} atacou com choque do ${this.tipo}`);
+    }
+}
 
-    const pikachu = new Pokemon('pikachu', 'elétrico');
-    // pikachu.atacar('choque do trovão')
-    // pikachu.nome = 'pikachu';
-    // pikachu.tipo = 'elétrico'
+// Cria uma instância de Pikachu
+const pikachuDoAsh = new Pikachu();
 
-    console.log(pikachu);
-    console.log(pikachuDoAsh)
+// Simula Pikachu sendo atacado e tenta modificar HP (não afetará #hp privado)
+pikachuDoAsh.recebeuAtaque();
+pikachuDoAsh.hp = 5000; // Tenta modificar HP diretamente (não afetará #hp)
+console.log(pikachuDoAsh.hp); // undefined (já que hp é privado)
+pikachuDoAsh.atacar(); // Ataque com método sobrescrito
+pikachuDoAsh.exibeHp(); // Exibe HP atual
 
-    console.log(pikachuDoAsh instanceof Pikachu);
-    console.log(pikachuDoAsh instanceof Pokemon);
+// Cria uma instância de Pokemon (não Pikachu)
+const pikachu = new Pokemon('pikachu', 'elétrico');
+
+// Exibe instâncias e verificações de instância
+console.log(pikachu); // Exibe a instância Pikachu
+console.log(pikachuDoAsh); // Exibe a instância Pikachu criada usando a classe Pikachu
+console.log(pikachuDoAsh instanceof Pikachu); // Verifica se pikachuDoAsh é uma instância de Pikachu
+console.log(pikachuDoAsh instanceof Pokemon); // Verifica se pikachuDoAsh é uma instância de Pokemon
