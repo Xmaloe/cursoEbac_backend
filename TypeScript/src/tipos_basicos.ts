@@ -10,6 +10,9 @@ const colegas: string[] = ['Karen', 'Isabella', 'Vicente'] //array de strings
 const tecnologias: Array<string> = ['html', 'javascript', 'css'] //array de strings
 const notas: ReadonlyArray<number> = [7, 9, 11, 13] //marcado como somente leitura, não pode modificar os elementos do array
 
+// O tipo ReandonlyArray é apenas para leitura não podendo adicionar novos itens 
+// tecnologias.push();
+// notas.push();
 
 //Uma tupla é uma estrutura de dados em programação que permite armazenar um conjunto ordenado de elementos heterogêneos. 
 //Em outras palavras, uma tupla é uma sequência imutável de valores de diferentes tipos. Cada valor na tupla é associado
