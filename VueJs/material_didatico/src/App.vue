@@ -1,9 +1,12 @@
 <script setup>
   const nome = "Karen Aprigio"
   const Botao = true
-  const Imagem = "https://cdn.pixabay.com/photo/2017/11/26/15/16/smiley-2979107_1280.jpg"
+  const Emoji = "https://cdn.pixabay.com/photo/2017/11/26/15/16/smiley-2979107_1280.jpg"
+  const Cafe = "https://cdn.pixabay.com/photo/2024/04/08/19/54/coffee-8684315_1280.jpg"
+  const gostaEmoji = false;
+  const gostaCafe = false;
 
-  const gostaDaImg = false;
+  const Autorizado = true;
 
 </script>
 
@@ -11,7 +14,14 @@
   <div class="container">
     <h1>{{ nome }}</h1>
     <button :disabled="Botao">Entratr em contato</button>
-    <img v-if="gostaDaImg" :src="Imagem">
+
+    <img v-if="gostaEmoji" :src="Emoji">
+    <img v-else-if="gostaCafe" :src="Cafe">
+
+    <h2 v-else>Não curte heróis da DC</h2>
+
+    <h3 v-if="Autorizado">Bem- vinda</h3>
+    <h4 v-else>Não possui acesso</h4>
   </div>
 </template>
 
