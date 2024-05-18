@@ -1,3 +1,53 @@
+
+<template>
+  <div class="container">
+    <h1>{{ nome }}</h1>
+    <button :disabled="Botao" id="botao">Entratr em contato</button>
+
+    <img v-if="gostaEmoji" :src="Emoji">
+    <img v-else-if="gostaCafe" :src="Cafe">
+
+    <h2 v-else>Não curte heróis da DC</h2>
+
+    <h3 v-if="Autorizado">Bem- vinda</h3>
+    <h4 v-else>Não possui acesso</h4>
+  </div>
+
+  <br />
+    <hr />
+
+    {{ Estado.contador }}
+
+    <button @click="incrementar" type="button">+</button>
+    <button @click="decrementar" type="button">-</button>
+
+  <br />
+    <hr />
+
+    {{ Estado.email }}
+    <input type="email" @keyup="Alterar">
+
+    <!-- <input type="email" @keyup="evento => Estado.email = evento.target.value"> -->
+  <br />
+    <hr />
+  Saldo: {{ Estado.saldo }} <br/>
+  Transferindo: {{ Estado.transferindo }} <br/>
+  Saldo após transferência: {{ SaldoFuturo() }} <br/>
+  <input :class="{invalido: !Validacao()}" @keyup="e => Estado.transferindo = e.target.value" type="number" placeholder="Quantia para transferir" />
+    <!-- <input :class="{invalido: Estado.transferindo > Estado.saldo}" @keyup="e => Estado.transferindo = e.target.value" type="number" placeholder="Quantia para transferir" /> -->
+  
+  <br />
+    <hr />
+
+  <ul>
+    <li v-for="nome in Estado.nomes">
+      {{ nome }}
+    </li>
+  </ul>  
+  <input @keyup="e => Estado.cadastro = e.target.value" type="text" placeholder="Digite um novo nome">
+  <button @click="Cadastrado" type="button">Cadastrar nome</button>
+</template>
+
 <script setup>
 import { reactive } from 'vue';
 
@@ -51,55 +101,6 @@ import { reactive } from 'vue';
     }
   }
 </script>
-
-<template>
-  <div class="container">
-    <h1>{{ nome }}</h1>
-    <button :disabled="Botao" id="botao">Entratr em contato</button>
-
-    <img v-if="gostaEmoji" :src="Emoji">
-    <img v-else-if="gostaCafe" :src="Cafe">
-
-    <h2 v-else>Não curte heróis da DC</h2>
-
-    <h3 v-if="Autorizado">Bem- vinda</h3>
-    <h4 v-else>Não possui acesso</h4>
-  </div>
-
-  <br />
-    <hr />
-
-    {{ Estado.contador }}
-
-    <button @click="incrementar" type="button">+</button>
-    <button @click="decrementar" type="button">-</button>
-
-  <br />
-    <hr />
-
-    {{ Estado.email }}
-    <input type="email" @keyup="Alterar">
-
-    <!-- <input type="email" @keyup="evento => Estado.email = evento.target.value"> -->
-  <br />
-    <hr />
-  Saldo: {{ Estado.saldo }} <br/>
-  Transferindo: {{ Estado.transferindo }} <br/>
-  Saldo após transferência: {{ SaldoFuturo() }} <br/>
-  <input :class="{invalido: !Validacao()}" @keyup="e => Estado.transferindo = e.target.value" type="number" placeholder="Quantia para transferir" />
-    <!-- <input :class="{invalido: Estado.transferindo > Estado.saldo}" @keyup="e => Estado.transferindo = e.target.value" type="number" placeholder="Quantia para transferir" /> -->
-  
-  <br />
-    <hr />
-
-  <ul>
-    <li v-for="nome in Estado.nomes">
-      {{ nome }}
-    </li>
-  </ul>  
-  <input @keyup="e => Estado.cadastro = e.target.value" type="text" placeholder="Digite um novo nome">
-  <button @click="Cadastrado" type="button">Cadastrar nome</button>
-</template>
 
 <style scoped>
   template {
