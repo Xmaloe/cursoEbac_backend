@@ -14,7 +14,11 @@ import { reactive } from 'vue';
 
   const Estado = reactive({
     contador: 0,
-    email: ''
+    email: '',
+    saldo: 5000,
+    transferindo: 0,
+    nomes: ['Karen', 'Aprigio', 'Moraes', 'Felicidade'],
+    cadastro: ''
   })
 
   function incrementar() {
@@ -29,6 +33,23 @@ import { reactive } from 'vue';
     Estado.email= e.target.value
   }
 
+  function SaldoFuturo() {
+    const {saldo, transferindo} = Estado;
+    return saldo - transferindo;
+  }
+
+  function Validacao() {
+    const {saldo, transferindo} = Estado;
+    return saldo >= transferindo;
+  }
+
+  function Cadastrado() {
+    if (Estado.cadastro.lenght >= 3) {
+      Estado.nomes.push(Estado.cadastro)
+    } else {
+      alert("Digite mais caracteres")
+    }
+  }
 </script>
 
 <template>
@@ -60,7 +81,24 @@ import { reactive } from 'vue';
     <input type="email" @keyup="Alterar">
 
     <!-- <input type="email" @keyup="evento => Estado.email = evento.target.value"> -->
+  <br />
+    <hr />
+  Saldo: {{ Estado.saldo }} <br/>
+  Transferindo: {{ Estado.transferindo }} <br/>
+  Saldo após transferência: {{ SaldoFuturo() }} <br/>
+  <input :class="{invalido: !Validacao()}" @keyup="e => Estado.transferindo = e.target.value" type="number" placeholder="Quantia para transferir" />
+    <!-- <input :class="{invalido: Estado.transferindo > Estado.saldo}" @keyup="e => Estado.transferindo = e.target.value" type="number" placeholder="Quantia para transferir" /> -->
+  
+  <br />
+    <hr />
 
+  <ul>
+    <li v-for="nome in Estado.nomes">
+      {{ nome }}
+    </li>
+  </ul>  
+  <input @keyup="e => Estado.cadastro = e.target.value" type="text" placeholder="Digite um novo nome">
+  <button @click="Cadastrado" type="button">Cadastrar nome</button>
 </template>
 
 <style scoped>
@@ -90,6 +128,11 @@ import { reactive } from 'vue';
   img {
     margin-top: 12px;
     width: 40%;
+  }
+
+  .invalido {
+    outline-color: red;
+    border-color: red;
   }
 
 </style>
